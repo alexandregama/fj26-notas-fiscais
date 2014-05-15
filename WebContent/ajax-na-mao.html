@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+	<title>Insert title here</title>
+	<script>
+		function trocaTexto() {
+			var xmlhttp;
+			if(window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				xmlhttp = new ActiveObjectX("MicrosoftXMLHTTP");
+			}
+			
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState == 4 && xmlhttp.status = 200) {
+					document.getElementById("meu_texto").innerHtml = "Novo texto";
+				}
+			}
+			
+			xmlhttp.open("GET", "meu_arquivo.txt", true);
+			xmlhttp.send();
+		}
+	</script>
+</head>
+<body>
+
+	<div id="meu_texto">Meu Texto</div>
+	
+	<form>
+		<input type="button" value="Trocar texto" onclick="trocaTexto();"></input>
+	</form>
+</body>
+</html>

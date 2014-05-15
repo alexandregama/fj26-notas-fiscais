@@ -1,26 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+ 	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Insert title here</title>
+	<title>Produtos</title>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
-<h:body>
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Nome:" for="nome" />
-			<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
-			
-			<h:outputLabel value="Descrição:" for="descricao" />
-			<h:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" />
-			
-			<h:outputLabel value="Preço:" for="preco" />
-			<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
 
-			<h:commandButton value="Gravar" action="#{produtoBean.grava}" />
-		</h:panelGrid>
-	</h:form>
+<h:body>
+
+	<siv id="cabecalho">
+		<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
+	</siv>
+
+	<div id="conteudo">
+	
+		<h:form>
+	
+			<fieldset>
+				<legend>Dados do Produto</legend>
+				<h2>
+					<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
+					<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
+				</h2>
+		
+				<h:inputHidden value="#{produtoBean.produto.id}" />
+		
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
+				
+				<h:outputLabel value="Descrição:" for="descricao" />
+				<h:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" />
+				
+				<h:outputLabel value="Preço:" for="preco" />
+				<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
+	
+				<h:commandButton value="Gravar" action="#{produtoBean.grava}" >
+					<f:ajax render="@form" execute="@form"/>
+				</h:commandButton>
+			</fieldset>
+			
+			<h2>Listagem de Produtos</h2>
+			
+			<h:dataTable value="#{produtoBean.produtos}" var="produto" styleClass="dados" rowClasses="impar,par">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+	        	    #{produto.nome}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Descrição</f:facet> 
+					#{produto.descricao}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Preço</f:facet> 
+					#{produto.preco}
+	      		</h:column>
+	
+				<h:column>
+					<f:facet name="header">Ações</f:facet>
+					<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
+						<f:ajax render="@form"/>
+					</h:commandLink>
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+	</div>
+		
+	<div id="rodape"> Copyright 2013.
+	      Todos os Direitos reservados a Alexandre Gama.
+	</div>		
+		
 </h:body>
 </html>
