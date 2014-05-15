@@ -1,0 +1,31 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="notas" transaction-type="RESOURCE_LOCAL">
+
+		<class>br.com.caelum.notasfiscais.modelo.Item</class>
+		<class>br.com.caelum.notasfiscais.modelo.NotaFiscal</class>
+		<class>br.com.caelum.notasfiscais.modelo.Produto</class>
+		<class>br.com.caelum.notasfiscais.modelo.Usuario</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/caelum-fj26" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!-- JPA não deve usar bean validation -->
+			<property name="javax.persistence.validation.mode" value="none" />
+
+			<!-- JPA atualiza as tabelas do banco automaticamente -->
+			<property name="javax.persistence.schema-generation.database.action"
+				value="create-or-extend-tables" />
+
+			<property name="eclipselink.logging.level.sql" value="FINE" />
+			<property name="eclipselink.logging.parameters" value="true" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
