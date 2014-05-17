@@ -1,12 +1,16 @@
 package br.com.caelum.notasfiscais.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Produto {
+public class Produto implements Serializable {
+
+	private static final long serialVersionUID = -4465951922612224346L;
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -12,6 +12,9 @@ import br.com.caelum.notasfiscais.util.JPAUtil;
 public class ProdutoDao implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
+	public ProdutoDao() {
+	}
 
 	public void adiciona(Produto produto) {
 		EntityManager manager = new JPAUtil().getEntityManager();
