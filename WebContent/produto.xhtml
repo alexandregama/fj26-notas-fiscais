@@ -11,15 +11,18 @@
 
 <h:body>
 
-	<div id="usuarioLogado">
-		Logado como: #{loginBean.usuario.login}
-	</div>
 
 	<div id="cabecalho">
 		<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
 	</div>
 
 	<div id="conteudo">
+		<div id="usuarioLogado">
+			Logado como: #{usuarioLogadoBean.usuario.login}
+		</div>
+		<h:form>
+			Logado como: #{usuarioLogadoBean.usuario.login} <h:commandLink value="Deslogar" action="#{loginBean.deslogar}" rendered="#{usuarioLogadoBean.logado}"/>
+		</h:form>
 	
 		<h:form>
 			<fieldset>
