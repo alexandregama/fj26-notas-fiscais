@@ -1,6 +1,5 @@
 package br.com.caelum.notasfiscais.listener;
 
-import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
@@ -15,6 +14,9 @@ public class AutenticadorListener implements PhaseListener {
 
 	@Inject
 	private UsuarioLogadoBean usuarioLogado;
+	
+	@Inject
+	private Navigator navigator;
 	
 	@Override
 	public void beforePhase(PhaseEvent event) {
@@ -31,9 +33,7 @@ public class AutenticadorListener implements PhaseListener {
 		}
 		
 		if (!usuarioLogado.isLogado()) {
-			NavigationHandler handler = context.getApplication().getNavigationHandler();
-			handler.handleNavigation(context, null, "login?faces-redirect=true");
-			context.renderResponse();
+			navigator.redirectTo("login?faces-redirect=true");
 		}
 		
 	}
