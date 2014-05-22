@@ -31,8 +31,10 @@ public class LoginBean implements Serializable {
 		return "login?faces-redirect=true";
 	}
 	
-	public void deslogar() {
+	public String deslogar() {
 		this.usuarioLogado.desloga();
+		
+		return "login?faces-redirect=true";
 	}
 
 	public Usuario getUsuario() {
