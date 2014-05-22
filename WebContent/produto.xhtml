@@ -2,21 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
  	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Produtos</title>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
 
-<h:body>
+<ui:composition template="/_template.xhtml">
 
 
-	<div id="cabecalho">
-		<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
-	</div>
-
-	<div id="conteudo">
+	<ui:define name="corpo">
+		
 		<div id="usuarioLogado">
 			Logado como: #{usuarioLogadoBean.usuario.login}
 		</div>
@@ -76,13 +70,10 @@
 				</h:column>
 				
 			</h:dataTable>
-		</h:form>	
+		</h:form>
+			
+	</ui:define>		
+	
+</ui:composition>	
 		
-	</div>
-		
-	<div id="rodape"> Copyright 2013.
-	      Todos os Direitos reservados a Alexandre Gama.
-	</div>		
-		
-</h:body>
 </html>
